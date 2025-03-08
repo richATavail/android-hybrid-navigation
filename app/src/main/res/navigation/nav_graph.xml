@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:id="@+id/nav_graph"
+	app:startDestination="@id/FragmentA">
+
+	<fragment
+		android:id="@+id/FragmentA"
+		android:name="com.bitwisearts.android.hybrid.FragmentA"
+		android:label="@string/first_fragment_label">
+
+		<action
+			android:id="@+id/action_FragmentA_to_FragmentB"
+			app:destination="@id/FragmentB" />
+	</fragment>
+
+	<fragment
+		android:id="@+id/FragmentB"
+		android:name="com.bitwisearts.android.hybrid.FragmentB"
+		android:label="Fragment B">
+		<!-- Fragment B is the point where we can navigate from this fragment -->
+		<!--	nav graph to the compose nav graph                              -->
+		<action
+			android:id="@+id/action_FragmentB_to_FragmentCompose"
+			app:destination="@id/FragmentCompose" >
+			<argument
+				android:name="composeTarget"
+				app:argType="com.bitwisearts.android.hybrid.ComposeScreen" />
+		</action>
+		<action
+			android:id="@+id/action_FragmentB_to_FragmentTerminal"
+			app:destination="@id/FragmentTerminal" />
+	</fragment>
+	<fragment
+		android:id="@+id/FragmentCompose"
+		android:name="com.bitwisearts.android.hybrid.FragmentCompose"
+		android:label="Fragment Compose">
+		<!-- Fragment Compose is where the Compose nav graph lives. It can    -->
+		<!--	return to the fragment nav graph from the fragment level using  -->
+		<!--	action_FragmentCompose_to_FragmentTerminal	-->
+		<argument
+			android:name="composeTarget"
+			app:argType="com.bitwisearts.android.hybrid.ComposeScreen" />
+		<action
+			android:id="@+id/action_FragmentCompose_to_FragmentTerminal"
+			app:destination="@id/FragmentTerminal" />
+	</fragment>
+	<fragment
+		android:id="@+id/FragmentTerminal"
+		android:name="com.bitwisearts.android.hybrid.FragmentTerminal"
+		android:label="Fragment Terminal">
+	</fragment>
+</navigation>
