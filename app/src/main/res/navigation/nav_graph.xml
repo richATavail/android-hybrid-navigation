@@ -45,6 +45,10 @@
 		<action
 			android:id="@+id/action_FragmentCompose_to_FragmentTerminal"
 			app:destination="@id/FragmentTerminal" />
+		<action
+			android:id="@+id/action_FragmentCompose_to_FragmentTerminal_Pop_Up_A"
+			app:destination="@id/FragmentTerminal"
+			app:popUpTo="@id/FragmentA"/>
 	</fragment>
 	<fragment
 		android:id="@+id/FragmentTerminal"

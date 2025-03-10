@@ -153,11 +153,25 @@ fun DetailsScreen(
 				// Use the fragment navigator to return to the fragment
 				// nav graph
 				fragNavController.navigate(
-					R.id.action_FragmentCompose_to_FragmentTerminal)
+					R.id.action_FragmentCompose_to_FragmentTerminal
+				)
 			},
 			modifier = Modifier.padding(16.dp)
 		) {
 			Text("Navigate to Fragment Terminal")
+		}
+		Spacer(modifier = Modifier.padding(16.dp))
+		Button(
+			onClick = {
+				// Use the fragment navigator to return to the fragment
+				// nav graph
+				fragNavController.navigate(
+					R.id.action_FragmentCompose_to_FragmentTerminal_Pop_Up_A
+				)
+			},
+			modifier = Modifier.padding(16.dp)
+		) {
+			Text("Pop up to Fragment A -> Navigate to Fragment Terminal")
 		}
 	}
 }
