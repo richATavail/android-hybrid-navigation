@@ -92,6 +92,23 @@ class FragmentB : Fragment() {
 						) {
 							Text("Navigate to Terminal Fragment")
 						}
+						Spacer(modifier = Modifier.padding(12.dp))
+
+						// Navigates to the Fragment Other Compose nav graph
+						Button(
+							onClick = {
+								fragmentNavController.navigate(
+									R.id.action_FragmentB_to_FragmentOtherCompose,
+									Bundle().apply {
+										putParcelable(
+											FragmentOtherCompose.OTHER_COMPOSE_TARGET,
+											OtherComposeScreen.LandingPage)
+									})
+							},
+							modifier = Modifier.padding(innerPadding)
+						) {
+							Text("Navigate to Landing Page")
+						}
 					}
 				}
 			}

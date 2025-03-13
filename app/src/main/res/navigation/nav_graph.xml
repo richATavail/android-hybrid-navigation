@@ -20,13 +20,21 @@
 		android:name="com.bitwisearts.android.hybrid.FragmentB"
 		android:label="Fragment B">
 		<!-- Fragment B is the point where we can navigate from this fragment -->
-		<!--	nav graph to the compose nav graph                              -->
+		<!--	nav graph to the compose nav graph in FragmentCompose           -->
 		<action
 			android:id="@+id/action_FragmentB_to_FragmentCompose"
 			app:destination="@id/FragmentCompose" >
 			<argument
 				android:name="composeTarget"
 				app:argType="com.bitwisearts.android.hybrid.ComposeScreen" />
+		</action>
+		<!--	It can also navigate to FragmentOtherCompose	-->
+		<action
+			android:id="@+id/action_FragmentB_to_FragmentOtherCompose"
+			app:destination="@id/FragmentOtherCompose" >
+			<argument
+				android:name="otherComposeTarget"
+				app:argType="com.bitwisearts.android.hybrid.OtherComposeScreen" />
 		</action>
 		<action
 			android:id="@+id/action_FragmentB_to_FragmentTerminal"
@@ -36,19 +44,33 @@
 		android:id="@+id/FragmentCompose"
 		android:name="com.bitwisearts.android.hybrid.FragmentCompose"
 		android:label="Fragment Compose">
-		<!-- Fragment Compose is where the Compose nav graph lives. It can    -->
-		<!--	return to the fragment nav graph from the fragment level using  -->
-		<!--	action_FragmentCompose_to_FragmentTerminal	-->
+		<!-- The argument used to determine where to go to in the Compose UI  -->
+		<!--	nav graph.														             -->
 		<argument
 			android:name="composeTarget"
 			app:argType="com.bitwisearts.android.hybrid.ComposeScreen" />
+		<!-- Fragment Compose is where the Compose nav graph lives. It can    -->
+		<!--	return to the fragment nav graph from the fragment level using  -->
+		<!--	action_FragmentCompose_to_FragmentTerminal	-->
 		<action
 			android:id="@+id/action_FragmentCompose_to_FragmentTerminal"
 			app:destination="@id/FragmentTerminal" />
+		<!--	Navigates to the FragmentTerminal and in doing so removes all	-->
+		<!--	fragments from the fragment backstack up to but not including	-->
+		<!--	FragmentA. Pressing the system back button after using this 	-->
+		<!--	nav action will return to FragmentA.								   -->
 		<action
 			android:id="@+id/action_FragmentCompose_to_FragmentTerminal_Pop_Up_A"
 			app:destination="@id/FragmentTerminal"
 			app:popUpTo="@id/FragmentA"/>
+	</fragment>
+	<fragment
+		android:id="@+id/FragmentOtherCompose"
+		android:name="com.bitwisearts.android.hybrid.FragmentOtherCompose"
+		android:label="Fragment Other Compose">
+		<argument
+			android:name="otherComposeTarget"
+			app:argType="com.bitwisearts.android.hybrid.OtherComposeScreen" />
 	</fragment>
 	<fragment
 		android:id="@+id/FragmentTerminal"

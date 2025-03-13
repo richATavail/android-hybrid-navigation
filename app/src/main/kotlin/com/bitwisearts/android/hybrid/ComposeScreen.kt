@@ -6,7 +6,7 @@ import kotlinx.serialization.Serializable
 
 /**
  * Represents the screens that can be navigated to in the Compose navigation
- * graph.
+ * graph encapsulated in a [FragmentCompose].
  *
  * This is a [Parcelize] to enable it to be passed as a Fragment nav argument.
  * This is a [Serializable] to enable it to be passed as a Compose nav argument.
